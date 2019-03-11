@@ -10,6 +10,7 @@ public class TransversalApplication {
 		SpringApplication.run(TransversalApplication.class, args);
 		System.out.println("");
 		System.out.println("");
+		System.out.println("version 1");
 	}
 
 }
