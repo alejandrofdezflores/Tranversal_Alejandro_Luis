@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-mar-2019 14:12:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Alumno" table="alumno" catalog="transversal" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clase" class="hibernate.Clase" fetch="select">
+            <column name="ID_CLASE" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="30" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="30" not-null="true" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="FECHA_NAC" length="10" not-null="true" />
+        </property>
+        <property name="media" type="java.lang.Float">
+            <column name="MEDIA" precision="4" />
+        </property>
+        <property name="aprobado" type="java.lang.Boolean">
+            <column name="APROBADO" />
+        </property>
+    </class>
+</hibernate-mapping>
