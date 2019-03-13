@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12-mar-2019 14:31:47 by Hibernate Tools 4.3.1 -->
+<!-- Generated 12-mar-2019 14:12:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Alumno" table="alumno" catalog="transversal" optimistic-lock="version">
+    <class name="hibernate.Alumno" table="alumno" catalog="transversal" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="clase" class="modelo.Clase" fetch="select">
+        <many-to-one name="clase" class="hibernate.Clase" fetch="select">
             <column name="ID_CLASE" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">
