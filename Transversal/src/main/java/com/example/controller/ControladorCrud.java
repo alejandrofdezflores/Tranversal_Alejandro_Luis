@@ -17,7 +17,7 @@ import com.example.controller.*;
 import com.example.model.Alumno;
  
 @Controller
-@RequestMapping("/crud")
+@RequestMapping("/crud/Alumno")
 public class ControladorCrud {
  
 
@@ -25,8 +25,8 @@ public class ControladorCrud {
  
     @RequestMapping(path="", method = RequestMethod.GET)
     public String listaUsuarios(ModelMap mp){
-        mp.put("usuarios", AlumnoDao.getAllAlumnos());
-        return "crud/lista";
+        mp.put("alumnos", AlumnoDao.getAllAlumnos());
+        return "crud/Alumno/lista";
     }
  
     @RequestMapping(path="/nuevo", method=RequestMethod.GET)
