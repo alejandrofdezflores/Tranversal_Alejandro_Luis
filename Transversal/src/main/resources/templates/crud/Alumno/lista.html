@@ -9,7 +9,8 @@
 		.tg .tg-4eph{background-color:#f9f9f9}
 	</style>
 	
-	<h3>Lista de alumnos</h3>
+	<h1  align="center">Lista de alumnos</h3>
+	
 <c:if test="${!empty alumno:${alumnos}}">
 	<table class="tg" align="center">
 
@@ -24,7 +25,7 @@
 		<td th:each="alumno:${alumnos}" th:text="${alumno.apellido}"></td>
 	<tr>
 		<td width="120">FECHA_NAC</td>
-		<td th:text="${dates.format(alumno.fecha_nac, 'dd-MMM-yyyy')}"></td>
+		
 	</tr>
 	<tr>
 		<td width="120">MEDIA</td>
