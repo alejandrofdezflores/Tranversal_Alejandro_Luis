@@ -1,4 +1,6 @@
-package com.example.controller;
+package com.example.controller.DAO;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -74,4 +76,6 @@ public class AlumnoDao {
         }
         return listOfAlumno;
     }
+
+	
 }

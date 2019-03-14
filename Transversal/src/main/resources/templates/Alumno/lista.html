@@ -20,17 +20,21 @@
 		<th width="120">MEDIA</th>
 		<th width="120">APROBADO</th>
 		<th width="120">ID_CLASE</th>
+		<th width="60">Editar</th>
+		<th width="60">Borrar</th>
+			
 
 	</tr>
-	
-		<tr>
-			<td th:each="alumno:${alumnos}" th:text="${alumno.id}"></td>
-			<td th:each="alumno:${alumnos}" th:text="${alumno.nombre}"></td>
-			<td th:each="alumno:${alumnos}" th:text="${alumno.apellido}"></td>
-			<td th:each="alumno:${alumnos}" th:text="${alumno.media}"></td>
-			<td th:each="alumno:${alumnos}" th:text="${alumno.aprobado}"></td>
-
-			
+		<tr th:each="alumno:${alumnos}" >
+			<td style="text-align:center" th:text="${alumno.id}"></td>
+			<td th:text="${alumno.nombre}"></td>
+			<td th:text="${alumno.apellido}"></td>
+			<td th:text="${alumno.fechaNac}"></td>
+			<td th:text="${alumno.media}"></td>
+			<td th:text="${alumno.aprobado}"></td>
+			<td th:text="${alumno.idClase.nombre}"></td>
+			<td><a href="<c:url value='/edit/${clase.id}' />" >Editar</a></td>
+			<td><a href="<c:url value='/remove/${clase.id}' />" >Borrar</a></td>		
 		</tr>
 	</c:forEach>
 	</table>

@@ -1,18 +1,18 @@
-package com.example.controller;
+package com.example.controller.DAO;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.example.model.HibernateUtil;
-import com.example.model.Profesor;
+import com.example.model.Asignatura;
 
-public class ProfesorDao {
-	public void saveProfesor(Profesor profesor) {
+public class AsignaturaDao {
+	public void saveAsignatura(Asignatura asignatura) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(profesor);
+            session.save(asignatura);
             transaction.commit();
-            System.out.println("profesor insertado");
+            System.out.println("Asignatura insertada");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -21,14 +21,14 @@ public class ProfesorDao {
         }
     }
 
-    public void deleteProfesor(int id) {
+    public void deleteAsignatura(int id) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Profesor profesor = session.get(Profesor.class, id);
-            if (profesor != null) {
-                session.delete(profesor);
-                System.out.println("profesor is deleted");
+            Asignatura asignatura = session.get(Asignatura.class, id);
+            if (asignatura != null) {
+                session.delete(asignatura);
+                System.out.println("Asignatura is deleted");
             }
             transaction.commit();
         } catch (Exception e) {
@@ -39,11 +39,11 @@ public class ProfesorDao {
         }
     }
 
-    public void updateProfesor(Profesor profesor) {
+    public void updateAsignatura(Asignatura asignatura) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(profesor);
+            session.update(asignatura);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -59,12 +59,12 @@ public class ProfesorDao {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static List<Profesor> getAllProfesor() {
+    public static List<Asignatura> getAllAsignaturas() {
         Transaction transaction = null;
-        List<Profesor> listOfProfesor = null;
+        List<Asignatura> listOfAsignatura = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            listOfProfesor = session.createQuery("from Profesor").getResultList();
+            listOfAsignatura = session.createQuery("from Asignatura").getResultList();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -72,6 +72,6 @@ public class ProfesorDao {
             }
             e.printStackTrace();
         }
-        return listOfProfesor;
+        return listOfAsignatura;
     }
 }
