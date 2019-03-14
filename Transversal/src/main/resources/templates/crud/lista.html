@@ -4,12 +4,11 @@
 <meta charset="UTF-8" />
 </head>
 <body>
-<h2>Lista de alumnos</h2>
+<h2>Lista de usuarios</h2>
 
-<ol>
-
- <li th:each="alumno: ${alumno}" th:text="${alumno}">valor</li>
-  </ol>
+	<ol>
+		<li th:each="usuario:${usuarios}" th:text="${usuario}">valor</li>
+	</ol>
 
 </body>
 </html>
