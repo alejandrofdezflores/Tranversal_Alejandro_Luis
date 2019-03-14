@@ -25,7 +25,8 @@
 		<td th:each="alumno:${alumnos}" th:text="${alumno.apellido}"></td>
 	<tr>
 		<td width="120">FECHA_NAC</td>
-		<td th:each="alumno:${alumnos}" th:text="${#dates.formatISO(fecha_nac)}"></td>
+		<td th:each="alumno:${alumnos}" th:text="${#dates.formatISO(decha_nac)}"></td>
+
 	</tr>
 	<tr>
 		<td width="120">MEDIA</td>
