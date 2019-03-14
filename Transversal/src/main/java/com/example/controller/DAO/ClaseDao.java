@@ -59,12 +59,28 @@ public class ClaseDao {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static List<Clase> getAllClaseS() {
+    public static List<Clase> getAllClases() {
         Transaction transaction = null;
         List<Clase> listOfClase = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             listOfClase = session.createQuery("from Clase").getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfClase;
+    }
+    
+    public static List<Clase> getAllClasesOrderByNombre() {
+        Transaction transaction = null;
+        List<Clase> listOfClase = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            listOfClase = session.createQuery("from Clase order by nombre").getResultList();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

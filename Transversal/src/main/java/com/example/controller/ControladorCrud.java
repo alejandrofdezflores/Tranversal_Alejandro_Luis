@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  
 import com.example.controller.*;
 import com.example.controller.DAO.AlumnoDao;
+import com.example.controller.DAO.ClaseDao;
 import com.example.model.Alumno;
  
 @Controller
@@ -33,26 +34,27 @@ public class ControladorCrud {
  
     @RequestMapping(path="/nuevo", method=RequestMethod.GET)
     public String nuevo(ModelMap mp){
-        mp.put("usuario", new Alumno());
+        mp.put("alumno", new Alumno());
+        mp.put("clases", ClaseDao.getAllClasesOrderByNombre());
         return "Alumno/nuevo";
     }
  
     @RequestMapping(path="/crear", method=RequestMethod.POST)
-    public String crear(@Valid Alumno usuario,
+    public String crear(@Valid Alumno alumno,
             BindingResult bindingResult, ModelMap mp){
         if(bindingResult.hasErrors()){
             return "/Alumno/nuevo";
         }else{
-            AlumnoDao.saveAlumno(usuario);
-            mp.put("usuario", usuario);
+            AlumnoDao.saveAlumno(alumno);
+            mp.put("alumno", alumno);
             return "Alumno/creado";
         }
     }
- /*
+ 
     @RequestMapping(path="/creado", method = RequestMethod.POST)
-    public String creado(@RequestParam("usuario") Alumno usuario){
+    public String creado(@RequestParam("alumno") Alumno alumno){
         return "/crud/creado";
-    }
+    }/*
     
     @RequestMapping(path="/borrar/{id}", method=RequestMethod.GET)
     public String borrar(@PathVariable("id") long id, ModelMap mp){
