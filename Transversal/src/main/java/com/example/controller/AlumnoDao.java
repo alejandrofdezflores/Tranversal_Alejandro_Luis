@@ -6,7 +6,7 @@ import com.example.model.HibernateUtil;
 import com.example.model.Alumno;
 
 public class AlumnoDao {
-	public void saveAlumno(Alumno alumno) {
+	public static void saveAlumno(Alumno alumno) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
