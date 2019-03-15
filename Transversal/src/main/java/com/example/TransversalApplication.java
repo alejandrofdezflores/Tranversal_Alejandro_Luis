@@ -8,7 +8,8 @@ public class TransversalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TransversalApplication.class, args);
-		System.out.println("El servidor ha sido arrancado.");
+		System.out.println("Iniciando servidor");
+		System.out.println("");
 	}
 
 }

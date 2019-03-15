@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
  
 import com.example.controller.*;
+import com.example.controller.DAO.AlumnoDao;
+import com.example.controller.DAO.ClaseDao;
 import com.example.model.Alumno;
  
 @Controller
-@RequestMapping("/crud/Alumno")
+@RequestMapping("/Alumno")
 public class ControladorCrud {
  
 
@@ -26,31 +29,32 @@ public class ControladorCrud {
     @RequestMapping(path="", method = RequestMethod.GET)
     public String listaUsuarios(ModelMap mp){
         mp.put("alumnos", AlumnoDao.getAllAlumnos());
-        return "crud/Alumno/lista";
+        return "Alumno/lista";
     }
  
     @RequestMapping(path="/nuevo", method=RequestMethod.GET)
     public String nuevo(ModelMap mp){
-        mp.put("usuario", new Alumno());
-        return "crud/nuevo";
+        mp.put("alumno", new Alumno());
+        mp.put("clases", ClaseDao.getAllClasesOrderByNombre());
+        return "Alumno/nuevo";
     }
  
     @RequestMapping(path="/crear", method=RequestMethod.POST)
-    public String crear(@Valid Alumno usuario,
+    public String crear(@Valid Alumno alumno,
             BindingResult bindingResult, ModelMap mp){
         if(bindingResult.hasErrors()){
-            return "/crud/nuevo";
+            return "/Alumno/nuevo";
         }else{
-            AlumnoDao.saveAlumno(usuario);
-            mp.put("usuario", usuario);
-            return "crud/creado";
+            AlumnoDao.saveAlumno(alumno);
+            mp.put("alumno", alumno);
+            return "Alumno/creado";
         }
     }
- /*
+ 
     @RequestMapping(path="/creado", method = RequestMethod.POST)
-    public String creado(@RequestParam("usuario") Alumno usuario){
+    public String creado(@RequestParam("alumno") Alumno alumno){
         return "/crud/creado";
-    }
+    }/*
     
     @RequestMapping(path="/borrar/{id}", method=RequestMethod.GET)
     public String borrar(@PathVariable("id") long id, ModelMap mp){
