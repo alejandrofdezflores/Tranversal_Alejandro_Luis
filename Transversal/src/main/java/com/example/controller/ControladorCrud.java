@@ -43,7 +43,7 @@ public class ControladorCrud {
     public String crear(@Valid Alumno alumno,
             BindingResult bindingResult, ModelMap mp){
         if(bindingResult.hasErrors()){
-            return "/Alumno/nuevo";
+            return "Alumno/nuevo";
         }else{
             AlumnoDao.saveAlumno(alumno);
             mp.put("alumno", alumno);
@@ -53,7 +53,7 @@ public class ControladorCrud {
  
     @RequestMapping(path="/creado", method = RequestMethod.POST)
     public String creado(@RequestParam("alumno") Alumno alumno){
-        return "/crud/creado";
+        return "Alumno/creado";
     }/*
     
     @RequestMapping(path="/borrar/{id}", method=RequestMethod.GET)
