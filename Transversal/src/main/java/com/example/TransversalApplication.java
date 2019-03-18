@@ -8,8 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TransversalApplication {
-	@PersistenceUnit(unitName= "myPersistenceUnit")
-	private EntityManagerFactory emf;
+
 	public static void main(String[] args) {
 		
 		SpringApplication.run(TransversalApplication.class, args);

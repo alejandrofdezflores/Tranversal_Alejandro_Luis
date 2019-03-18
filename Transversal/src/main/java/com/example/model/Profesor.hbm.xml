@@ -15,7 +15,7 @@
             <column name="APELLIDO" />
         </property>
         <property name="fechaNac" type="java.util.Date">
-            <column name="FECHANAC" />
+            <column name="FECHA_NAC" />
         </property>
         <property name="telefono" type="int">
             <column name="TELEFONO" />
@@ -23,11 +23,11 @@
         <property name="correo" type="java.lang.String">
             <column name="CORREO" />
         </property>
-        <bag name="asignaturaCollection" table="imparte" inverse="false" lazy="false">
+        <bag name="asignaturaCollection" table="imparte" lazy="false" inverse="false" fetch="select">
             <key>
-                <column name="ID" />
+                <column name="ID_PROFESOR" />
             </key>
-            <many-to-many >
+            <many-to-many entity-name="com.example.model.Asignatura">
                 <column name="ID_ASIGNATURA" />
             </many-to-many>
         </bag>

@@ -15,7 +15,7 @@
             <column name="APELLIDO" />
         </property>
         <property name="fechaNac" type="java.util.Date">
-            <column name="FECHANAC" />
+            <column name="FECHA_NAC" />
         </property>
         <property name="media" type="java.lang.Float">
             <column name="MEDIA" />
@@ -23,8 +23,9 @@
         <property name="aprobado" type="java.lang.Boolean">
             <column name="APROBADO" />
         </property>
-        <many-to-one name="idClase" class="java.lang.Integer" fetch="join">
-            <column name="ID_CLASE" />
+        
+        <many-to-one name="idClase" class = "com.example.model.Clase" fetch="select" >
+            <column name="ID_CLASE"  />
         </many-to-one>
     </class>
 </hibernate-mapping>

@@ -11,20 +11,20 @@
         <property name="nombre" type="java.lang.String">
             <column name="NOMBRE" />
         </property>
-        <bag name="claseCollection" table="tiene" inverse="false" lazy="true" cascade="all">
+        <bag name="claseCollection" table="tiene" inverse="true" lazy="false" cascade="all" fetch="select">
             <key>
-                <column name="ID"/>
+                <column name="ID_ASIGNATURA"/>
             </key>
-            <many-to-many >
+            <many-to-many entity-name="com.example.model.Clase" >
                 <column name="ID_CLASE" />
             </many-to-many>
         </bag>
-        <bag name="profesorCollection" table="PROFESOR" inverse="false" lazy="false" >
+        <bag name="profesorCollection" inverse="true" table="imparte" lazy="false" fetch="select">
             <key>
-                <column name="ID" />
+                <column name="ID_ASIGNATURA" />
             </key>
-            <many-to-many>
-                <column name="ID_PROFESOR" not-null="true" />
+            <many-to-many entity-name="com.example.model.Profesor" >
+                <column name="ID_PROFESOR" />
             </many-to-many>
         </bag>
     </class>

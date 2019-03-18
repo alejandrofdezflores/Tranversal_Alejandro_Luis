@@ -45,4 +45,6 @@ Contributor(s):
   <table-filter match-name="Asignatura"/>
   <table-filter match-name="Clase"/>
   <table-filter match-name="Profesor"/>
+   <table-filter match-name="tiene"/>
+    <table-filter match-name="imparte"/>
 </hibernate-reverse-engineering>

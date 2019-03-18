@@ -12,21 +12,21 @@
             <column name="NOMBRE" />
         </property>
         <property name="idProfesor" type="int">
-            <column name="IDPROFESOR" />
+            <column name="ID_PROFESOR" />
         </property>
-        <bag name="asignaturaCollection" table="tiene" inverse="false" lazy="false">
+        <bag name="asignaturaCollection" table="tiene" inverse="false" lazy="false" fetch="select">
             <key>
-                <column name="ID" />
+                <column name="ID_CLASE" />
             </key>
-            <many-to-many >
+            <many-to-many entity-name="com.example.model.Asignatura">
                 <column name="ID_ASIGNATURA" />
             </many-to-many>
         </bag>
-        <bag name="alumnoCollection" table="Alumno" inverse="true" lazy="false" fetch="select" cascade = "all">
+        <bag name="alumnoCollection" table="Alumno" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="ID" />
+                <column name="ID_CLASE" not-null="true" />
             </key>
-            <one-to-many class="java.lang.Integer" />
+            <one-to-many class="com.example.model.Alumno" />
         </bag>
     </class>
 </hibernate-mapping>
