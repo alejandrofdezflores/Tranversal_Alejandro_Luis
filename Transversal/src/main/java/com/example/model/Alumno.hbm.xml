@@ -23,8 +23,8 @@
         <property name="aprobado" type="java.lang.Boolean">
             <column name="APROBADO" />
         </property>
-        <many-to-one name="idClase" class="com.example.model.Clase" fetch="join">
-            <column name="IDCLASE" />
+        <many-to-one name="idClase" class="java.lang.Integer" fetch="join">
+            <column name="ID_CLASE" />
         </many-to-one>
     </class>
 </hibernate-mapping>

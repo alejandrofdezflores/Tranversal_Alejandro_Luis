@@ -47,12 +47,9 @@ public class Clase implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_PROFESOR")
     private int idProfesor;
-    @JoinTable(name = "tiene", joinColumns = {
-        @JoinColumn(name = "ID_CLASE", referencedColumnName = "ID")}, inverseJoinColumns = {
-        @JoinColumn(name = "ID_ASIGNATURA", referencedColumnName = "ID")})
     @ManyToMany
     private Collection<Asignatura> asignaturaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idClase")
+    @OneToMany()
     private Collection<Alumno> alumnoCollection;
 
     public Clase() {

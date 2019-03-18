@@ -18,6 +18,7 @@ import com.example.controller.*;
 import com.example.controller.DAO.AlumnoDao;
 import com.example.controller.DAO.ClaseDao;
 import com.example.model.Alumno;
+import com.example.model.Clase;
  
 @Controller
 @RequestMapping("/Alumno")
@@ -40,12 +41,13 @@ public class ControladorCrud {
     }
  
     @RequestMapping(path="/crear", method=RequestMethod.POST)
-    public String crear(@Valid Alumno alumno,
+    public String crear(@Valid Alumno alumno,@Valid Clase clase,
             BindingResult bindingResult, ModelMap mp){
         if(bindingResult.hasErrors()){
-            return "Alumno/nuevo";
+            return "/Alumno/nuevo";
         }else{
-            AlumnoDao.saveAlumno(alumno);
+        	clase = ClaseDao.getClaseById(clase.getId());
+            AlumnoDao.saveAlumno(alumno,clase);
             mp.put("alumno", alumno);
             return "Alumno/creado";
         }

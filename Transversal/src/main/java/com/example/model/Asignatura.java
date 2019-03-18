@@ -39,9 +39,9 @@ public class Asignatura implements Serializable {
     @Basic(optional = false)
     @Column(name = "NOMBRE")
     private String nombre;
-    @ManyToMany(mappedBy = "asignaturaCollection")
+    @ManyToMany()
     private Collection<Clase> claseCollection;
-    @ManyToMany(mappedBy = "asignaturaCollection")
+    @ManyToMany()
     private Collection<Profesor> profesorCollection;
 
     public Asignatura() {

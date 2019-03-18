@@ -2,7 +2,7 @@ package com.example.model;
 // Generated 12-mar-2019 14:12:29 by Hibernate Tools 4.3.1
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -50,15 +50,14 @@ public class Alumno implements Serializable {
     private String apellido;
     @Basic(optional = false)
     @Column(name = "FECHA_NAC")
-    @Temporal(TemporalType.DATE)
+   
     private Date fechaNac;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "MEDIA")
     private Float media;
     @Column(name = "APROBADO")
     private Boolean aprobado;
-    @JoinColumn(name = "ID_CLASE", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
+    @ManyToOne()
     private Clase idClase;
 
     public Alumno() {

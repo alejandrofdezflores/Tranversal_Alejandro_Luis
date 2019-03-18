@@ -11,17 +11,21 @@
         <property name="nombre" type="java.lang.String">
             <column name="NOMBRE" />
         </property>
-        <bag name="claseCollection" table="CLASE" inverse="false" lazy="true">
+        <bag name="claseCollection" table="tiene" inverse="false" lazy="true" cascade="all">
             <key>
-                <column name="ID" />
+                <column name="ID"/>
             </key>
-            <one-to-many class="com.example.model.Clase" />
+            <many-to-many >
+                <column name="ID_CLASE" />
+            </many-to-many>
         </bag>
-        <bag name="profesorCollection" table="PROFESOR" inverse="false" lazy="true">
+        <bag name="profesorCollection" table="PROFESOR" inverse="false" lazy="false" >
             <key>
                 <column name="ID" />
             </key>
-            <one-to-many class="com.example.model.Profesor" />
+            <many-to-many>
+                <column name="ID_PROFESOR" not-null="true" />
+            </many-to-many>
         </bag>
     </class>
 </hibernate-mapping>

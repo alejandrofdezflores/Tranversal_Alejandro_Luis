@@ -61,9 +61,6 @@ public class Profesor implements Serializable {
     @Basic(optional = false)
     @Column(name = "CORREO")
     private String correo;
-    @JoinTable(name = "imparte", joinColumns = {
-        @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID")}, inverseJoinColumns = {
-        @JoinColumn(name = "ID_ASIGNATURA", referencedColumnName = "ID")})
     @ManyToMany
     private Collection<Asignatura> asignaturaCollection;
 

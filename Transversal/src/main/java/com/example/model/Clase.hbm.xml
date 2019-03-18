@@ -14,17 +14,19 @@
         <property name="idProfesor" type="int">
             <column name="IDPROFESOR" />
         </property>
-        <bag name="asignaturaCollection" table="ASIGNATURA" inverse="false" lazy="true">
+        <bag name="asignaturaCollection" table="tiene" inverse="false" lazy="false">
             <key>
                 <column name="ID" />
             </key>
-            <one-to-many class="com.example.model.Asignatura" />
+            <many-to-many >
+                <column name="ID_ASIGNATURA" />
+            </many-to-many>
         </bag>
-        <bag name="alumnoCollection" table="ALUMNO" inverse="false" lazy="true">
+        <bag name="alumnoCollection" table="Alumno" inverse="true" lazy="false" fetch="select" cascade = "all">
             <key>
                 <column name="ID" />
             </key>
-            <one-to-many class="com.example.model.Alumno" />
+            <one-to-many class="java.lang.Integer" />
         </bag>
     </class>
 </hibernate-mapping>
