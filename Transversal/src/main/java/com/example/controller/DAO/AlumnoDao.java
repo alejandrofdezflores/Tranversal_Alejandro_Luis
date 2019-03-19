@@ -68,7 +68,7 @@ public class AlumnoDao {
         List<Alumno> listOfAlumno = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            listOfAlumno = session.createQuery("Select a.nombre, a.apellido from Alumno a").getResultList();
+            listOfAlumno = session.createQuery("From Alumno").getResultList();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
