@@ -33,8 +33,8 @@
 			<td th:text="${alumno.media}"></td>
 			<td th:text="${alumno.aprobado}"></td>
 			<td th:text="${alumno.idClase.nombre}"></td>
-			<td><a href="<c:url value='/edit/${clase.id}' />" >Editar</a></td>
-			<td><a href="<c:url value='/remove/${clase.id}' />" >Borrar</a></td>		
+			<td><a href="<c:url value='/edit/${alumno.id}' />" >Editar</a></td>
+			<td><a th:href="@{/Alumno/borrar(id=${alumno.id})}" >Borrar</a></td>		
 		</tr>
 	</c:forEach>
 	</table>

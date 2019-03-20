@@ -10,10 +10,10 @@
  <form action="#" th:action="@{/Alumno/crear}" th:object="${alumno}" method="post">
     	<p>Nombre: <input type="text" th:field="*{nombre}" /></p>
         <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
-        <p>Fecha nacimiento: <input type="text" th:field="*{fechaNac}" /></p>
+        <p>Fecha nacimiento: <input type="date" th:field="*{fechaNac}" /></p>
         <p>Nombre de la clase 
-        	<select th:field="*{idClase}">
-				<option  th:each="clase:${clases}" th:value="${clase.id}"  th:text="${clase.nombre}" ></option>
+        	<select >
+				<option th:each="clase:${clases}" th:value="${clase}"  th:text="${clase.nombre}" ></option>
 			</select>
 		</p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
