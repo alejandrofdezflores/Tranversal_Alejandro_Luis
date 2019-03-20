@@ -18,6 +18,7 @@ import com.example.controller.*;
 import com.example.controller.DAO.AlumnoDao;
 import com.example.controller.DAO.ClaseDao;
 import com.example.model.Alumno;
+import com.example.model.Clase;
  
 @Controller
 @RequestMapping("/Alumno")
@@ -36,24 +37,25 @@ public class ControladorCrud {
     public String nuevo(ModelMap mp){
         mp.put("alumno", new Alumno());
         mp.put("clases", ClaseDao.getAllClasesOrderByNombre());
+        
         return "Alumno/nuevo";
     }
  
     @RequestMapping(path="/crear", method=RequestMethod.POST)
-    public String crear(@Valid Alumno alumno,
-            BindingResult bindingResult, ModelMap mp){
+    public String crear(@Valid Alumno alumno,@Valid Clase clases,
+            BindingResult bindingResult, Model mp){
         if(bindingResult.hasErrors()){
             return "/Alumno/nuevo";
         }else{
-            AlumnoDao.saveAlumno(alumno);
-            mp.put("alumno", alumno);
+        	clases = ClaseDao.getClaseById(clases.getId());
+            AlumnoDao.saveAlumno(alumno,clases);
             return "Alumno/creado";
         }
     }
  
     @RequestMapping(path="/creado", method = RequestMethod.POST)
     public String creado(@RequestParam("alumno") Alumno alumno){
-        return "/crud/creado";
+        return "Alumno/creado";
     }/*
     
     @RequestMapping(path="/borrar/{id}", method=RequestMethod.GET)

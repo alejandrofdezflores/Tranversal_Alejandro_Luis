@@ -25,7 +25,7 @@ public class HibernateUtil {
 
 				// Hibernate settings equivalent to hibernate.cfg.xml's properties
 				Properties settings = new Properties();
-				settings.put(AvailableSettings.DRIVER, "com.mysql.cj.jdbc.Driver");
+				settings.put(AvailableSettings.DRIVER, "com.mysql.jdbc.Driver");
 
 				settings.put(AvailableSettings.URL, "jdbc:mysql://localhost:3306/transversal?useSSL=false&serverTimezone=UTC");
 				settings.put(AvailableSettings.USER, "admin");

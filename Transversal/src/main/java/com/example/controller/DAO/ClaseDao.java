@@ -90,4 +90,20 @@ public class ClaseDao {
         }
         return listOfClase;
     }
+    
+    public static Clase getClaseById(int id) {
+        Transaction transaction = null;
+        Clase listOfClase = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            listOfClase = (Clase) session.createQuery("Select c From Clase where c.id = :id").getSingleResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfClase;
+    }
 }

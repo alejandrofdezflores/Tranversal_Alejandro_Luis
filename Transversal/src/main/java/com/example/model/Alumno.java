@@ -2,7 +2,7 @@ package com.example.model;
 // Generated 12-mar-2019 14:12:29 by Hibernate Tools 4.3.1
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -24,38 +24,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author CampusFP
  */
 @Entity
-@Table(name = "alumno")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a")
-    , @NamedQuery(name = "Alumno.findById", query = "SELECT a FROM Alumno a WHERE a.id = :id")
-    , @NamedQuery(name = "Alumno.findByNombre", query = "SELECT a FROM Alumno a WHERE a.nombre = :nombre")
-    , @NamedQuery(name = "Alumno.findByApellido", query = "SELECT a FROM Alumno a WHERE a.apellido = :apellido")
-    , @NamedQuery(name = "Alumno.findByFechaNac", query = "SELECT a FROM Alumno a WHERE a.fechaNac = :fechaNac")
-    , @NamedQuery(name = "Alumno.findByMedia", query = "SELECT a FROM Alumno a WHERE a.media = :media")
-    , @NamedQuery(name = "Alumno.findByAprobado", query = "SELECT a FROM Alumno a WHERE a.aprobado = :aprobado")})
+@Table(name = "Alumno")
 public class Alumno implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "NOMBRE")
     private String nombre;
-    @Basic(optional = false)
-    @Column(name = "APELLIDO")
     private String apellido;
     @Basic(optional = false)
     @Column(name = "FECHA_NAC")
-    @Temporal(TemporalType.DATE)
     private Date fechaNac;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "MEDIA")
     private Float media;
-    @Column(name = "APROBADO")
     private Boolean aprobado;
     @JoinColumn(name = "ID_CLASE", referencedColumnName = "ID")
     @ManyToOne(optional = false)
@@ -64,6 +45,7 @@ public class Alumno implements Serializable {
     public Alumno() {
     }
 
+    
     public Alumno(Integer id) {
         this.id = id;
     }
@@ -74,15 +56,15 @@ public class Alumno implements Serializable {
         this.apellido = apellido;
         this.fechaNac = fechaNac;
     }
-
-    public long getId() {
+    
+    public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public String getNombre() {
         return nombre;
     }

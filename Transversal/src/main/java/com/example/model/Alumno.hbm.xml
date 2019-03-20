@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-mar-2019 11:12:27 by Hibernate Tools 3.5.0.Final 
+<hibernate-mapping>
+    <class name="com.example.model.Alumno" table="alumno" catalog="transversal" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="idClase" class="com.example.model.Clase" fetch="select">
+            <column name="ID_CLASE" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="30" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="30" not-null="true" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="FECHA_NAC" length="10" not-null="true" />
+        </property>
+        <property name="media" type="java.lang.Float">
+            <column name="MEDIA" precision="4" />
+        </property>
+        <property name="aprobado" type="java.lang.Boolean">
+            <column name="APROBADO" />
+        </property>
+    </class>
+</hibernate-mapping>
+-->
+<hibernate-mapping>
+    <class name="com.example.model.Alumno" table="ALUMNO">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="apellido" type="java.lang.String">
+            <column name="APELLIDO" />
+        </property>
+        <property name="fechaNac" type="java.util.Date">
+            <column name="FECHA_NAC" />
+        </property>
+        <property name="media" type="java.lang.Float">
+            <column name="MEDIA" />
+        </property>
+        <property name="aprobado" type="java.lang.Boolean">
+            <column name="APROBADO" />
+        </property>
+        
+        <many-to-one name="idClase" class = "com.example.model.Clase" fetch="select" >
+            <column name="ID_CLASE"  />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

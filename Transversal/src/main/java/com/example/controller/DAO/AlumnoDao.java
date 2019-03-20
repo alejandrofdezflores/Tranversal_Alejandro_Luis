@@ -6,12 +6,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import com.example.model.HibernateUtil;
 import com.example.model.Alumno;
+import com.example.model.Clase;
 
 public class AlumnoDao {
-	public static void saveAlumno(Alumno alumno) {
+	public static void saveAlumno(Alumno alumno, Clase clase) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
+            alumno.setIdClase(clase);
             session.save(alumno);
             transaction.commit();
             System.out.println("Alumno insertado");
@@ -66,7 +68,7 @@ public class AlumnoDao {
         List<Alumno> listOfAlumno = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            listOfAlumno = session.createQuery("from Alumno").getResultList();
+            listOfAlumno = session.createQuery("From Alumno").getResultList();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

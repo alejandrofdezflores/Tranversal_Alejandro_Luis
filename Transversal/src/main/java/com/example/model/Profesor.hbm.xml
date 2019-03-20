@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-mar-2019 11:12:27 by Hibernate Tools 3.5.0.Final 
+<hibernate-mapping>
+    <class name="com.example.model.Profesor" table="profesor" catalog="transversal" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="30" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="30" not-null="true" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="FECHA_NAC" length="10" not-null="true" />
+        </property>
+        <property name="telefono" type="int">
+            <column name="TELEFONO" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="CORREO" length="50" not-null="true" />
+        </property>
+        <set name="asignaturas" table="imparte" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PROFESOR" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.example.model.Asignatura">
+                <column name="ID_ASIGNATURA" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="clases" table="clase" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PROFESOR" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="com.example.model.Clase" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
+-->
+<hibernate-mapping>
+    <class name="com.example.model.Profesor" table="PROFESOR">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="NOMBRE" />
+        </property>
+        <property name="apellido" type="java.lang.String">
+            <column name="APELLIDO" />
+        </property>
+        <property name="fechaNac" type="java.util.Date">
+            <column name="FECHA_NAC" />
+        </property>
+        <property name="telefono" type="int">
+            <column name="TELEFONO" />
+        </property>
+        <property name="correo" type="java.lang.String">
+            <column name="CORREO" />
+        </property>
+        <bag name="asignaturaCollection" table="imparte" lazy="false" inverse="false" fetch="select">
+            <key>
+                <column name="ID_PROFESOR" />
+            </key>
+            <many-to-many entity-name="com.example.model.Asignatura">
+                <column name="ID_ASIGNATURA" />
+            </many-to-many>
+        </bag>
+    </class>
+</hibernate-mapping>

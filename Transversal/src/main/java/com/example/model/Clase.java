@@ -8,6 +8,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -26,31 +28,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author CampusFP
  */
 @Entity
-@Table(name = "clase")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Clase.findAll", query = "SELECT c FROM Clase c")
-    , @NamedQuery(name = "Clase.findById", query = "SELECT c FROM Clase c WHERE c.id = :id")
-    , @NamedQuery(name = "Clase.findByNombre", query = "SELECT c FROM Clase c WHERE c.nombre = :nombre")
-    , @NamedQuery(name = "Clase.findByIdProfesor", query = "SELECT c FROM Clase c WHERE c.idProfesor = :idProfesor")})
+@Table(name = "Clase")
 public class Clase implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "NOMBRE")
     private String nombre;
-    @Basic(optional = false)
-    @Column(name = "ID_PROFESOR")
-    private int idProfesor;
+    @OneToOne()
+    @JoinColumn(name = "ID_PROFESOR")
+    private Profesor idProfesor;
     @JoinTable(name = "tiene", joinColumns = {
         @JoinColumn(name = "ID_CLASE", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_ASIGNATURA", referencedColumnName = "ID")})
-    @ManyToMany
+    @ManyToMany()
     private Collection<Asignatura> asignaturaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idClase")
     private Collection<Alumno> alumnoCollection;
@@ -62,10 +55,9 @@ public class Clase implements Serializable {
         this.id = id;
     }
 
-    public Clase(Integer id, String nombre, int idProfesor) {
+    public Clase(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.idProfesor = idProfesor;
     }
 
     public Integer getId() {
@@ -84,11 +76,11 @@ public class Clase implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getIdProfesor() {
+    public Profesor getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(int idProfesor) {
+    public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
 

@@ -22,22 +22,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author CampusFP
  */
 @Entity
-@Table(name = "asignatura")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Asignatura.findAll", query = "SELECT a FROM Asignatura a")
-    , @NamedQuery(name = "Asignatura.findById", query = "SELECT a FROM Asignatura a WHERE a.id = :id")
-    , @NamedQuery(name = "Asignatura.findByNombre", query = "SELECT a FROM Asignatura a WHERE a.nombre = :nombre")})
+@Table(name = "Asignatura")
 public class Asignatura implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "NOMBRE")
     private String nombre;
     @ManyToMany(mappedBy = "asignaturaCollection")
     private Collection<Clase> claseCollection;

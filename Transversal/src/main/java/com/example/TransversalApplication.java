@@ -1,5 +1,8 @@
 package com.example;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,8 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TransversalApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(TransversalApplication.class, args);
-		System.out.println("Iniciando servidor");
+		System.out.println("version 1");
 		System.out.println("");
 	}
 

@@ -4,10 +4,11 @@ package com.example.model;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,44 +28,24 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author CampusFP
  */
 @Entity
-@Table(name = "profesor")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Profesor.findAll", query = "SELECT p FROM Profesor p")
-    , @NamedQuery(name = "Profesor.findById", query = "SELECT p FROM Profesor p WHERE p.id = :id")
-    , @NamedQuery(name = "Profesor.findByNombre", query = "SELECT p FROM Profesor p WHERE p.nombre = :nombre")
-    , @NamedQuery(name = "Profesor.findByApellido", query = "SELECT p FROM Profesor p WHERE p.apellido = :apellido")
-    , @NamedQuery(name = "Profesor.findByFechaNac", query = "SELECT p FROM Profesor p WHERE p.fechaNac = :fechaNac")
-    , @NamedQuery(name = "Profesor.findByTelefono", query = "SELECT p FROM Profesor p WHERE p.telefono = :telefono")
-    , @NamedQuery(name = "Profesor.findByCorreo", query = "SELECT p FROM Profesor p WHERE p.correo = :correo")})
+@Table(name = "Profesor")
 public class Profesor implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "NOMBRE")
     private String nombre;
-    @Basic(optional = false)
-    @Column(name = "APELLIDO")
     private String apellido;
     @Basic(optional = false)
     @Column(name = "FECHA_NAC")
-    @Temporal(TemporalType.DATE)
     private Date fechaNac;
-    @Basic(optional = false)
-    @Column(name = "TELEFONO")
     private int telefono;
-    @Basic(optional = false)
-    @Column(name = "CORREO")
     private String correo;
     @JoinTable(name = "imparte", joinColumns = {
         @JoinColumn(name = "ID_PROFESOR", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_ASIGNATURA", referencedColumnName = "ID")})
-    @ManyToMany
+    @ManyToMany()
     private Collection<Asignatura> asignaturaCollection;
 
     public Profesor() {

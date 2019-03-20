@@ -1,40 +1,195 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<title>Lista de profesores</title>
-	
-	<style type="text/css">
-		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-		.tg .tg-4eph{background-color:#f9f9f9}
-	</style>
-	
-	<h3>Lista de profesores</h3>
-<c:if test="${!empty listPersons}">
-	<table class="tg">
-	<tr>
-		<th width="80">ID</th>
-		<th width="120">NOMBRE</th>
-		<th width="120">APELLIDO</th>
-		<th width="120">FECHA_NAC</th>
-		<th width="120">TELEFONO</th>
-		<th width="120">CORREO</th>
-		<th width="60">Editar</th>
-		<th width="60">Borrar</th>
-	</tr>
-	<c:forEach items="${listPersons}" var="profesor">
-		<tr>
-			<td>${profesor.id}</td>
-			<td>${profesor.nombre}</td>
-			<td>${profesor.apellido}</td>
-			<td>${profesor.fecha_nacimiento}</td>
-			<td>${profesor.telefono}</td>
-			<td>${profesor.correo}</td>
-			<td><a href="<c:url value='/edit/${profesor.id}' />" >Editar</a></td>
-			<td><a href="<c:url value='/remove/${profesor.id}' />" >Borrar</a></td>
-		</tr>
-	</c:forEach>
-	</table>
-</c:if>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Lista de profesores</title>
+
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <link href="../css/sb-admin.css" rel="stylesheet">
+
+  <style type="text/css">
+
+    html{
+         height: 100%;
+    }
+    body{
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        height: 100%; 
+    }
+    .tg  {
+      border-collapse:collapse;
+      border-spacing:0;
+      border-color:#ccc;
+    }
+    .tg td{
+      font-family:Arial, sans-serif;
+      font-size:14px;
+      padding:10px 5px;
+      border-style:solid;
+      border-width:1px;
+      overflow:hidden;
+      word-break:normal;
+      text-align:center;
+      border-color:#ccc;
+      color:#333;
+      background-color:#fff;
+    }
+    .tg th{
+      font-family:Arial, sans-serif;
+      font-size:14px;font-weight:normal;
+      padding:10px 5px;
+      text-align:center;
+      border-width:1px;overflow:hidden;
+      word-break:normal;border-color:#ccc;
+      color:#333;
+      background-color:#f0f0f0;
+    }
+    .tg .tg-4eph{
+      background-color:#f9f9f9;
+    }
+  </style>
+
+</head>
+
+<body id="page-top">
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <a class="navbar-brand mr-1" href="index.html">Proyecto transversal</a>
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+    </form>
+
+  </nav>
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="../index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Inicio</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Alumno</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="../Alumno/lista.html">Gestionar alumnos</a>
+          <a class="dropdown-item" href="../Alumno/crear.html">Crear</a>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Profesor</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="lista.html">Gestionar profesores</a>
+          <a class="dropdown-item" href="crear.html">Crear</a>            
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Clase</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="login.html">Gestion clases</a>
+          <a class="dropdown-item" href="register.html">Crear</a>  
+        </div>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Asignatura</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="login.html">Gestionar asignaturas</a>
+          <a class="dropdown-item" href="register.html">Crear</a> 
+
+      
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Gestionar profesores</a>
+          </li>
+        </ol>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Base de datos: profesor</div>
+          <div class="card-body">
+            <div class="table-responsive">
+
+             <c:if test="${!empty listPersons}">
+              <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                 <tr>
+                    <th width="80">ID</th>
+                    <th width="120">NOMBRE</th>
+                    <th width="120">APELLIDO</th>
+                    <th width="120">FECHA_NAC</th>
+                    <th width="120">TELEFONO</th>
+                    <th width="120">CORREO</th>
+                    <th width="60">Editar</th>
+                    <th width="60">Borrar</th>
+                  </tr>
+                  <c:forEach items="${listPersons}" var="profesor">
+                  <tr>
+                        <td>${profesor.id}</td>
+                        <td>${profesor.nombre}</td>
+                        <td>${profesor.apellido}</td>
+                        <td>${profesor.fecha_nacimiento}</td>
+                        <td>${profesor.telefono}</td>
+                        <td>${profesor.correo}</td>
+                        <td><a href="<c:url value='/edit/${profesor.id}' />" >Editar</a></td>
+                        <td><a href="<c:url value='/remove/${profesor.id}' />" >Borrar</a></td>
+                      </tr>
+                    </c:forEach>
+                </table>
+              </c:if>
+            </div>
+        </div>
+
+      </div>
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Trabajo trasnsversal de Alejandro Fernandez FLores y Luis Garcia Menendez</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/chart.js/Chart.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+  <script src="../js/sb-admin.min.js"></script>
+  <script src="../js/demo/datatables-demo.js"></script>
+  <script src="../js/demo/chart-area-demo.js"></script>
+
 </body>
+
 </html>
