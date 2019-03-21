@@ -2,6 +2,8 @@ package com.example.controller.DAO;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import com.example.model.Clase;
 import com.example.model.HibernateUtil;
 import com.example.model.Profesor;
 
@@ -73,5 +75,22 @@ public class ProfesorDao {
             e.printStackTrace();
         }
         return listOfProfesor;
+    }
+    
+
+    public static List<Clase> getAllProfesoresOrderByNombre() {
+        Transaction transaction = null;
+        List<Clase> listOfClase = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            listOfClase = session.createQuery("from Profesor order by nombre").getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfClase;
     }
 }

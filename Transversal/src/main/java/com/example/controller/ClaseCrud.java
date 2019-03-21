@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.controller.*;
 import com.example.controller.DAO.AlumnoDao;
 import com.example.controller.DAO.ClaseDao;
+import com.example.controller.DAO.ProfesorDao;
 import com.example.model.Alumno;
 import com.example.model.Clase;
  
@@ -37,7 +38,7 @@ public class ClaseCrud {
     @RequestMapping(path="/nuevo", method=RequestMethod.GET)
     public String nuevo(ModelMap mp){
         mp.put("clase", new Clase());
-        mp.put("clases", ClaseDao.getAllClasesOrderByNombre());
+        mp.put("clases", ProfesorDao.getAllProfesoresOrderByNombre());
         
         return "Clase/nuevo";
     }

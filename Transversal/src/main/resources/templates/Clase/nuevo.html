@@ -97,7 +97,7 @@
                 <div class="form-group">
                 <div class="form-label-group">
                   <select th:field="*{idProfesor}">
-                    <option  th:each="profesor:${profesores}" th:value="${profesor.idProfesor}"  th:text="${profesor.nombre}" id="nombre" class="form-control" placeholder="profesor" required="required" autofocus="autofocus">
+                    <option  th:each="profesor:${profesores}" th:value="${profesor.id}"  th:text="${profesor.nombre}" id="nombre" class="form-control" placeholder="profesor" required="required" autofocus="autofocus">
                     </option>
                   </select>
                 </div>
