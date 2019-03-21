@@ -23,7 +23,7 @@ import com.example.model.Clase;
  
 @Controller
 @RequestMapping("/Alumno")
-public class ControladorCrud {
+public class AlumnoCrud {
  
 
 //    private UsuarioCrud uc;

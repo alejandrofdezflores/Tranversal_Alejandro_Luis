@@ -144,14 +144,14 @@
                     <th width="120">CORREO</th>
                     <th width="60">Editar</th>
                     <th width="60">Borrar</th>
-                  </tr>
-                  
+                  </tr>             
                    <tr th:each="profesor:${profesores}" >
-                        <td>${profesor.id}</td>
-                        <td>${profesor.nombre}</td>
-                        <td>${profesor.apellido}</td>
-                        <td>${profesor.fecha_nacimiento}</td>
-                        <td>${profesor.telefono}</td>
+                   <td th:text="${profesor.id}"></td>
+                   <td th:text="${profesor.nombre}"></td>
+                   <td th:text="${profesor.apellido}"></td>
+                   <td th:text="${profesor.fecha_nacimiento"></td>
+                   <td th:text="${profesor.telefono}"></td>
+
                         <td>${profesor.correo}</td>
                         <td><a href="<c:url value='/edit/${profesor.id}' />" >Editar</a></td>
                         <td><a href="<c:url value='/remove/${profesor.id}' />" >Borrar</a></td>

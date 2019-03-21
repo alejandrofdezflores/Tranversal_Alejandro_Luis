@@ -6,7 +6,7 @@ import com.example.model.HibernateUtil;
 import com.example.model.Profesor;
 
 public class ProfesorDao {
-	public void saveProfesor(Profesor profesor) {
+	public static void saveProfesor(Profesor profesor) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -21,7 +21,7 @@ public class ProfesorDao {
         }
     }
 
-    public void deleteProfesor(int id) {
+    public static void deleteProfesor(int id) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
