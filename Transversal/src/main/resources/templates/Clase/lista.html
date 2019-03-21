@@ -139,12 +139,11 @@
                   </tr>
                   
                   <tr th:each="clase:${clases}">
-                        <td>${clase.id}</td>
-                        <td>${clase.nombre}</td>
-                        <td>${clase.id_profesor}</td>
-                        <td><a href="<c:url value='/edit/${clase.id}' />" >Editar</a></td>
-                        <td><a href="<c:url value='/remove/${clase.id}' />" >Borrar</a></td>
-                      </tr>
+                  <td th:text="${clase.id}"></td>
+                  <td th:text="${clase.idProfesor.nombre}"></td>
+				  <td><a href="<c:url value='/edit/${clase.id}' />" >Editar</a></td>
+				  <td><a th:href="@{/Clase/borrar(id=${clase.id})}" >Borrar</a></td>	
+                       </tr>
                     </c:forEach>
                 </table>
               </c:if>
