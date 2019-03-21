@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -38,7 +38,9 @@ public class AsignaturaCrud {
  
     @RequestMapping(path="/nuevo", method=RequestMethod.GET)
     public String nuevo(ModelMap mp){
-        mp.put("asignatura", new Alumno());
+        mp.put("asignatura", new Clase());
+        mp.put("asignaturas", AsignaturaDao.getAllAsignaturas());
+        
         return "Asignatura/nuevo";
     }
  
@@ -55,15 +57,15 @@ public class AsignaturaCrud {
     }
  
     @RequestMapping(path="/creado", method = RequestMethod.POST)
-    public String creado(@RequestParam("alumno") Asignatura asignatura){
+    public String creado(@RequestParam("clase") Asignatura asignatura){
         return "Asignatura/creado";
     }
     
     @RequestMapping(path="/borrar", method=RequestMethod.GET)
     public String borrar(@RequestParam(name="id")String id, ModelMap mp){
     	int id2 = Integer.valueOf(id);
-    	AsignaturaDao.deleteAsignatura(id2);
-        mp.put("asignatura", AsignaturaDao.getAllAsignaturas());
+        ClaseDao.deleteClase(id2);
+        mp.put("asignaturas", ClaseDao.getAllClases());
         return "Asignatura/lista";
     }
     /**
