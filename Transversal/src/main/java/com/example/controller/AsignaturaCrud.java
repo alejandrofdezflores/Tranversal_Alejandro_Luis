@@ -32,7 +32,7 @@ public class AsignaturaCrud {
  
     @RequestMapping(path="", method = RequestMethod.GET)
     public String listaUsuarios(ModelMap mp){
-        mp.put("asignatura", AsignaturaDao.getAllAsignaturas());
+        mp.put("asignaturas", AsignaturaDao.getAllAsignaturas());
         return "Asignatura/lista";
     }
  
