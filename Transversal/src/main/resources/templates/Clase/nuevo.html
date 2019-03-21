@@ -94,10 +94,10 @@
                 </div>
               </div>
 
-               <div class="form-group">
+                <div class="form-group">
                 <div class="form-label-group">
                   <select th:field="*{idProfesor}">
-                    <option  th:each="clase:${clases}" th:value="${clase.id_profesor}"  th:text="${clase.nombre}" id="nombre" class="form-control" placeholder="apellido" required="required" autofocus="autofocus">
+                    <option  th:each="profesor:${profesores}" th:value="${profesor.idProfesor.nombre}"   class="form-control" placeholder="apellido" required="required" autofocus="autofocus">
                     </option>
                   </select>
                 </div>
