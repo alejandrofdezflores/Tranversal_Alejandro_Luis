@@ -140,6 +140,7 @@
                   
                   <tr th:each="clase:${clases}">
                   <td th:text="${clase.id}"></td>
+                  <td th:text="${clase.nombre}"></td>
                   <td th:text="${clase.idProfesor.nombre}"></td>
 				  <td><a href="<c:url value='/edit/${clase.id}' />" >Editar</a></td>
 				  <td><a th:href="@{/Clase/borrar(id=${clase.id})}" >Borrar</a></td>	
