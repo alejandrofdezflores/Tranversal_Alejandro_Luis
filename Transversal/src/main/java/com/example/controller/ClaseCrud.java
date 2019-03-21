@@ -38,7 +38,7 @@ public class ClaseCrud {
     @RequestMapping(path="/nuevo", method=RequestMethod.GET)
     public String nuevo(ModelMap mp){
         mp.put("clase", new Clase());
-        mp.put("clases", ProfesorDao.getAllProfesoresOrderByNombre());
+        mp.put("profesores", ProfesorDao.getAllProfesoresOrderByNombre());
         
         return "Clase/nuevo";
     }
