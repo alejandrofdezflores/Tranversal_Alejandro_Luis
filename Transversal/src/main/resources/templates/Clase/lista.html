@@ -29,37 +29,31 @@
         -webkit-flex-direction: column;
         height: 100%; 
     }
-    .tg  {
-      border-collapse:collapse;
-      border-spacing:0;
-      border-color:#ccc;
-    }
-    .tg td{
-      font-family:Arial, sans-serif;
-      font-size:14px;
-      padding:10px 5px;
-      border-style:solid;
-      border-width:1px;
-      overflow:hidden;
-      word-break:normal;
-      text-align:center;
-      border-color:#ccc;
-      color:#333;
-      background-color:#fff;
-    }
-    .tg th{
-      font-family:Arial, sans-serif;
-      font-size:14px;font-weight:normal;
-      padding:10px 5px;
-      text-align:center;
-      border-width:1px;overflow:hidden;
-      word-break:normal;border-color:#ccc;
-      color:#333;
-      background-color:#f0f0f0;
-    }
-    .tg .tg-4eph{
-      background-color:#f9f9f9;
-    }
+     @media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+       tr:nth-of-type(2n) {
+           background-color: inherit;
+       }
+       tr td:first-child {
+           background: #f0f0f0;
+           font-weight:bold;
+           font-size:1.3em;
+       }
+       tbody td {
+           display: block;
+           text-align:center;
+       }
+       tbody td:before {
+           content: attr(data-th);
+           display: block;
+           text-align:center;
+       }
+}
   </style>
 
 </head>

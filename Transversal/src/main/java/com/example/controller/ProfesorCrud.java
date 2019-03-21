@@ -39,7 +39,7 @@ public class ProfesorCrud {
         mp.put("profesor", new Profesor());
         mp.put("clases", ClaseDao.getAllClasesOrderByNombre());
         
-        return "Alumno/nuevo";
+        return "profesor/nuevo";
     }
  
     @RequestMapping(path="/crear", method=RequestMethod.POST)
