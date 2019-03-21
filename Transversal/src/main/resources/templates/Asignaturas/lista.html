@@ -139,8 +139,8 @@
                   <tr th:each="asignatura:${asignaturas}" >
                     <td th:text="${asignatura.id}"></td>
                     <td th:text="${asignatura.nombre}"></td>
-                    <td><a href="<c:url value='/edit/${asignatura.id}' />" >Editar</a></td>
-                    <td><a href="<c:url value='/remove/${asignatura.id}' />" >Borrar</a></td>    
+					<td><a href="<c:url value='/edit/${asignatura.id}' />" >Editar</a></td>
+					<td><a th:href="@{/Alumno/borrar(id=${asignatura.id})}" >Borrar</a></td>		
                   </tr>
                 </c:forEach>
                 </table>
