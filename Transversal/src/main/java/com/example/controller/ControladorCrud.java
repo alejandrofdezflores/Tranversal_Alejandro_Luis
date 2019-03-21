@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,13 +43,13 @@ public class ControladorCrud {
     }
  
     @RequestMapping(path="/crear", method=RequestMethod.POST)
-    public String crear(@Valid Alumno alumno,@Valid Clase clases,
+    public String crear(@ModelAttribute @Valid Alumno alumno,
             BindingResult bindingResult, Model mp){
         if(bindingResult.hasErrors()){
             return "/Alumno/nuevo";
         }else{
-        	clases = ClaseDao.getClaseById(clases.getId());
-            AlumnoDao.saveAlumno(alumno,clases);
+        	//clases = ClaseDao.getClaseById(clases.getId());
+            AlumnoDao.saveAlumno(alumno);
             return "Alumno/creado";
         }
     }
@@ -56,17 +57,16 @@ public class ControladorCrud {
     @RequestMapping(path="/creado", method = RequestMethod.POST)
     public String creado(@RequestParam("alumno") Alumno alumno){
         return "Alumno/creado";
-    }/*
-    
-    @RequestMapping(path="/borrar/{id}", method=RequestMethod.GET)
-    public String borrar(@PathVariable("id") long id, ModelMap mp){
-    	Optional<Alumno> optionalUser = uc.findById(id);
-    	Alumno user = optionalUser.get();
-        uc.delete(user);
-        mp.put("usuarios", uc.findAll());
-        return "crud/lista";
     }
     
+    @RequestMapping(path="/borrar", method=RequestMethod.GET)
+    public String borrar(@RequestParam(name="id")String id, ModelMap mp){
+    	int id2 = Integer.valueOf(id);
+        AlumnoDao.deleteAlumno(id2);
+        mp.put("alumnos", AlumnoDao.getAllAlumnos());
+        return "Alumno/lista";
+    }
+    /**
     @RequestMapping(path="/editar/{id}", method=RequestMethod.GET)
     public String editar(@PathVariable("id") long id, ModelMap mp){
         mp.put("usuario", uc.findById(id));

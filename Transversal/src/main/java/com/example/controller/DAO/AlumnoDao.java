@@ -9,11 +9,11 @@ import com.example.model.Alumno;
 import com.example.model.Clase;
 
 public class AlumnoDao {
-	public static void saveAlumno(Alumno alumno, Clase clase) {
+	public static void saveAlumno(Alumno alumno) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            alumno.setIdClase(clase);
+            
             session.save(alumno);
             transaction.commit();
             System.out.println("Alumno insertado");
@@ -25,7 +25,7 @@ public class AlumnoDao {
         }
     }
 
-    public void deleteAlumno(int id) {
+    public static void deleteAlumno(int id) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();

@@ -77,36 +77,30 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="../index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Inicio</span>
-        </a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
           <span>Alumno</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="lista.html">Gestionar alumnos</a>
-          <a class="dropdown-item" href="crear.html">Crear</a>
+          <a class="dropdown-item" href="">Gestionar alumnos</a>
+          <a class="dropdown-item" href="nuevo">Crear</a>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
           <span>Profesor</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="../Profesor/lista.html">Gestionar profesores</a>
-          <a class="dropdown-item" href="../Profesor/crear.html">Crear</a>            
+          <a class="dropdown-item" href="../Profesor/">Gestionar profesores</a>
+          <a class="dropdown-item" href="../Profesor/nuevo">Crear</a>            
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
           <span>Clase</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Gestion clases</a>
-          <a class="dropdown-item" href="register.html">Crear</a>  
+          <a class="dropdown-item" href="../Clase/">Gestion clases</a>
+          <a class="dropdown-item" href="../Clase/nuevo">Crear</a>  
         </div>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,8 +108,8 @@
           <span>Asignatura</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Gestionar asignaturas</a>
-          <a class="dropdown-item" href="register.html">Crear</a> 
+          <a class="dropdown-item" href="../Asignaturas/">Gestionar asignaturas</a>
+          <a class="dropdown-item" href="../Asignaturas/nuevo">Crear</a> 
 
       
     </ul>
@@ -135,7 +129,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Base de datos: alumnos</div>
+            Base de datos: alumno</div>
           <div class="card-body">
             <div class="table-responsive">
              <c:if test="${!empty alumno:${alumnos}}">
@@ -150,9 +144,9 @@
                   <th width="120">ID_CLASE</th>
                   <th width="60">Editar</th>
                   <th width="60">Borrar</th>
-                    
 
                 </tr>
+
                   <tr th:each="alumno:${alumnos}" >
                     <td style="text-align:center" th:text="${alumno.id}"></td>
                     <td th:text="${alumno.nombre}"></td>
@@ -174,7 +168,7 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Trabajo trasnsversal de Alejandro Fernandez FLores y Luis Garcia Menendez</span>
+            <span>Copyright © Trabajo trasnsversal de Alejandro Fernandez Flores y Luis Garcia Menendez</span>
           </div>
         </div>
       </footer>
