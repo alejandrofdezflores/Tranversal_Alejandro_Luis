@@ -6,7 +6,7 @@ import com.example.model.HibernateUtil;
 import com.example.model.Clase;
 
 public class ClaseDao {
-	public void saveClase(Clase clase) {
+	public static void saveClase(Clase clase) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -21,7 +21,7 @@ public class ClaseDao {
         }
     }
 
-    public void deleteClase(int id) {
+    public static void deleteClase(int id) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -39,7 +39,7 @@ public class ClaseDao {
         }
     }
 
-    public void updateClase(Clase clase) {
+    public static void updateClase(Clase clase) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
