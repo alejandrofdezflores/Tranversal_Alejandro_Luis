@@ -9,52 +9,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Lista de alumnos</title>
+  <title>Editar profesor</title>
 
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <link href="../css/sb-admin.css" rel="stylesheet">
-
-  <style type="text/css">
-
-    html{
-         height: 100%;
-    }
-    body{
-        display: flex;
-        display: -webkit-flex;
-        flex-direction: column;
-        -webkit-flex-direction: column;
-        height: 100%; 
-    }
-     @media screen and (max-width: 600px) {
-       table {
-           width:100%;
-       }
-       thead {
-           display: none;
-       }
-       tr:nth-of-type(2n) {
-           background-color: inherit;
-       }
-       tr td:first-child {
-           background: #f0f0f0;
-           font-weight:bold;
-           font-size:1.3em;
-       }
-       tbody td {
-           display: block;
-           text-align:center;
-       }
-       tbody td:before {
-           content: attr(data-th);
-           display: block;
-           text-align:center;
-       }
-}
-  </style>
 
 </head>
 
@@ -77,8 +38,8 @@
           <span>Alumno</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="">Gestionar alumnos</a>
-          <a class="dropdown-item" href="nuevo">Crear</a>
+          <a class="dropdown-item" href="../Alumno/">Gestionar alumnos</a>
+          <a class="dropdown-item" href="">Crear</a>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
@@ -115,47 +76,59 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Gestionar alumnos</a>
+            <a href="#">Editar profesor</a>
           </li>
         </ol>
 
-        <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Base de datos: alumno</div>
+         <!-- Form Example -->
+         
+       <div class="container">
+        <div class="card card-login mx-auto mt-5">
+          <div class="card-header">Editar un profesor</div>
           <div class="card-body">
-            <div class="table-responsive">
-             <c:if test="${!empty alumno:${alumnos}}">
-              <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <tr>
-                  <th width="80">ID</th>
-                  <th width="120">NOMBRE</th>
-                  <th width="120">APELLIDO</th>
-                  <th width="120">FECHA_NAC</th>
-                  <th width="120">MEDIA</th>
-                  <th width="120">APROBADO</th>
-                  <th width="120">CLASE</th>
-                  <th width="60">Editar</th>
-                  <th width="60">Borrar</th>
+            <form action="#" th:action="@{/Alumno/editar}" th:object="${alumno}" method="post">
+            
+              <div class="form-group">
+                <div class="form-label-group">
+                  <input type="text" th:field="*{nombre}" id="nombre" class="form-control" placeholder="nombre" required="required" autofocus="autofocus">
+                  <label for="nombre">Nombre</label>
+                </div>
+              </div>
 
-                </tr>
 
-                  <tr th:each="alumno:${alumnos}" >
-                    <td style="text-align:center" th:text="${alumno.id}"></td>
-                    <td th:text="${alumno.nombre}"></td>
-                    <td th:text="${alumno.apellido}"></td>
-                    <td th:text="${alumno.fechaNac}"></td>
-                    <td th:text="${alumno.media}"></td>
-                    <td th:text="${alumno.aprobado}"></td>
-                    <td th:text="${alumno.idClase.nombre}"></td>
-					<td><a href="<c:url value='/edit/${alumno.id}' />" >Editar</a></td>
-					<td><a th:href="@{/Alumno/borrar(id=${alumno.id})}" >Borrar</a></td>		
-                  </tr>
-                </c:forEach>
-                </table>
-              </c:if>
-            </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <input input type="text" th:field="*{apellido}" id="apellido" class="form-control" placeholder="apellido" required="required" autofocus="autofocus">
+                  <label for="apellido">Apellido</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label-group">
+                  <input type="date" th:field="*{fechaNac}" id="fecha" class="form-control" placeholder="fecha" required="required" autofocus="autofocus">
+                  <label for="fecha">Fecha de nacimiento</label>
+                </div>
+              </div>
+			
+			 <div class="form-group">
+                <div class="form-label-group">
+                  <input input type="text" th:field="*{telefono}" id="telefono" class="form-control" placeholder="telefono" required="required" autofocus="autofocus">
+                  <label for="telefono">Telefono</label>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="form-label-group">
+                  <input input type="mail" th:field="*{correo}" id="correo" class="form-control" placeholder="correo" required="required" autofocus="autofocus">
+                  <label for="correo">Correo</label>
+                </div>
+              </div>
+              
+            
+
+              <a type="submit" value="Submit" class="btn btn-primary btn-block">Crear</a>
+            </form>
+          </div>
         </div>
 
       </div>

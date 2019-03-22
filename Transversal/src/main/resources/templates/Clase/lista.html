@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Lista de clases</title>
+  <title>Editar clases</title>
 
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
@@ -115,7 +115,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Gestionar clases</a>
+            <a href="#">Editar clases</a>
           </li>
         </ol>
 
@@ -133,6 +133,7 @@
                     <th width="80">ID</th>
                     <th width="120">NOMBRE</th>
                     <th width="120">PROFESOR</th>
+                    <th width="120">ALUMNOS</th>
                     <th width="60">Editar</th>
                     <th width="60">Borrar</th>
 
@@ -142,6 +143,7 @@
                   <td th:text="${clase.id}"></td>
                   <td th:text="${clase.nombre}"></td>
                   <td th:text="${clase.idProfesor.nombre}"></td>
+                  <td><a th:href="@{/Clase/mostrar(id=${clase.id})}" >Ver alumnos de la clase</a></td>	
 				  <td><a href="<c:url value='/edit/${clase.id}' />" >Editar</a></td>
 				  <td><a th:href="@{/Clase/borrar(id=${clase.id})}" >Borrar</a></td>	
                        </tr>

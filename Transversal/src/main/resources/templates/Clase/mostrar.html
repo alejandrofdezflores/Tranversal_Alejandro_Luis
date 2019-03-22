@@ -126,7 +126,7 @@
             Base de datos: alumno</div>
           <div class="card-body">
             <div class="table-responsive">
-             <c:if test="${!empty alumno:${alumnos}}">
+             <c:if test="${!empty clase:${clases}}">
               <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tr>
                   <th width="80">ID</th>
@@ -136,12 +136,10 @@
                   <th width="120">MEDIA</th>
                   <th width="120">APROBADO</th>
                   <th width="120">CLASE</th>
-                  <th width="60">Editar</th>
-                  <th width="60">Borrar</th>
 
                 </tr>
 
-                  <tr th:each="alumno:${alumnos}" >
+                  <tr th:each="clase:${clases.alumnoCollection}" >
                     <td style="text-align:center" th:text="${alumno.id}"></td>
                     <td th:text="${alumno.nombre}"></td>
                     <td th:text="${alumno.apellido}"></td>
@@ -149,8 +147,6 @@
                     <td th:text="${alumno.media}"></td>
                     <td th:text="${alumno.aprobado}"></td>
                     <td th:text="${alumno.idClase.nombre}"></td>
-					<td><a href="<c:url value='/edit/${alumno.id}' />" >Editar</a></td>
-					<td><a th:href="@{/Alumno/borrar(id=${alumno.id})}" >Borrar</a></td>		
                   </tr>
                 </c:forEach>
                 </table>
