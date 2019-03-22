@@ -43,7 +43,7 @@ public class AlumnoDao {
         }
     }
 
-    public void updateAlumno(Alumno profesor) {
+    public static void updateAlumno(Alumno profesor) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -79,28 +79,18 @@ public class AlumnoDao {
         return listOfAlumno;
     }
 
-
-	public static void getAllAlumnos(int id2) {
-		 Transaction transaction = null;
-	        List<Alumno> listOfAlumno = null;
-	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-	            transaction = session.beginTransaction();
-	            listOfAlumno = session.createQuery("From Alumno").getResultList();
-	            transaction.commit();
-	        } catch (Exception e) {
-	            if (transaction != null) {
-	                transaction.rollback();
-	            }
-	            e.printStackTrace();
-	        }
-	    }
-	
-	}
+	public static Alumno buscarPorId(int id) {
 		
-
-
-	
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+           
+            Alumno alumno = session.get(Alumno.class, id);
+            return alumno;
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+        }
+		return null;
+	}
 
 	
 }
-

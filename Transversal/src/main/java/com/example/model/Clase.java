@@ -43,7 +43,7 @@ public class Clase implements Serializable {
     @JoinTable(name = "tiene", joinColumns = {
         @JoinColumn(name = "ID_CLASE", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_ASIGNATURA", referencedColumnName = "ID")})
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Asignatura> asignaturaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idClase")
     private Collection<Alumno> alumnoCollection;

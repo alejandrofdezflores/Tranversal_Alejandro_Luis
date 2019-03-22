@@ -6,11 +6,7 @@ import com.example.model.HibernateUtil;
 import com.example.model.Asignatura;
 
 public class AsignaturaDao {
-
 	public static void saveAsignatura(Asignatura asignatura) {
-
-	public void saveAsignatura(Asignatura asignatura) {
-
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -26,9 +22,6 @@ public class AsignaturaDao {
     }
 
     public static void deleteAsignatura(int id) {
-
-    public void deleteAsignatura(int id) {
-
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -46,11 +39,7 @@ public class AsignaturaDao {
         }
     }
 
-
-    public static void updateAsignatura(Asignatura asignatura) {
-
     public void updateAsignatura(Asignatura asignatura) {
-
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();

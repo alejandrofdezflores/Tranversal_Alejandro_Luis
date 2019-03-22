@@ -51,7 +51,7 @@
                 <column name="ID_ASIGNATURA" />
             </many-to-many>
         </bag>
-        <bag name="alumnoCollection" table="Alumno" inverse="true" lazy="true" fetch="select">
+        <bag name="alumnoCollection" table="Alumno" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="ID_CLASE" not-null="true" />
             </key>
