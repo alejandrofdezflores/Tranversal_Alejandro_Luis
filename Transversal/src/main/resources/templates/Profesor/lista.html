@@ -184,3 +184,44 @@
 </body>
 
 </html>
+<html>
+<head>
+	<title>Lista de profesores</title>
+	
+	<style type="text/css">
+		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+		.tg .tg-4eph{background-color:#f9f9f9}
+	</style>
+	
+	<h3>Lista de profesores</h3>
+<c:if test="${!empty listPersons}">
+	<table class="tg">
+	<tr>
+		<th width="80">ID</th>
+		<th width="120">NOMBRE</th>
+		<th width="120">APELLIDO</th>
+		<th width="120">FECHA_NAC</th>
+		<th width="120">TELEFONO</th>
+		<th width="120">CORREO</th>
+		<th width="60">Editar</th>
+		<th width="60">Borrar</th>
+	</tr>
+	<c:forEach items="${listPersons}" var="profesor">
+		<tr>
+			<td>${profesor.id}</td>
+			<td>${profesor.nombre}</td>
+			<td>${profesor.apellido}</td>
+			<td>${profesor.fecha_nacimiento}</td>
+			<td>${profesor.telefono}</td>
+			<td>${profesor.correo}</td>
+			<td><a href="<c:url value='/edit/${profesor.id}' />" >Editar</a></td>
+			<td><a href="<c:url value='/remove/${profesor.id}' />" >Borrar</a></td>
+		</tr>
+	</c:forEach>
+	</table>
+</c:if>
+</body>
+</html>
+

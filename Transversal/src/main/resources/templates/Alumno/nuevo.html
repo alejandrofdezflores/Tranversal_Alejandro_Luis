@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,3 +150,30 @@
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+<h2>Nuevo alumno</h2>
+
+ <form action="#" th:action="@{/Alumno/crear}" th:object="${alumno}" method="post">
+    	<p>Nombre: <input type="text" th:field="*{nombre}" /></p>
+        <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
+        <p>Fecha nacimiento: <input type="date" th:field="*{fechaNac}" /></p>
+        <p>Nombre de la clase 
+        	<select >
+				<option th:each="clase:${clases}" th:value="${clase}"  th:text="${clase.nombre}" ></option>
+			</select>
+		</p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+
+
+</body>
+</html>
+

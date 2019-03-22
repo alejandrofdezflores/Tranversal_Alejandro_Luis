@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -183,3 +184,48 @@
 </body>
 
 </html>
+
+<html>
+<head>
+	<title>Lista de alumnos</title>
+	
+	<style type="text/css">
+		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+		.tg .tg-4eph{background-color:#f9f9f9}
+	</style>
+	
+	<h3>Lista de alumnos</h3>
+<c:if test="${!empty alumno:${alumnos}}">
+	<table class="tg">
+	<tr>
+		<th width="80">ID</th>
+		<th width="120">NOMBRE</th>
+		<th width="120">APELLIDO</th>
+		<th width="120">FECHA_NAC</th>
+		<th width="120">MEDIA</th>
+		<th width="120">APROBADO</th>
+		<th width="120">ID_CLASE</th>
+		<th width="60">Editar</th>
+		<th width="60">Borrar</th>
+			
+
+	</tr>
+		<tr th:each="alumno:${alumnos}" >
+			<td style="text-align:center" th:text="${alumno.id}"></td>
+			<td th:text="${alumno.nombre}"></td>
+			<td th:text="${alumno.apellido}"></td>
+			<td th:text="${alumno.fechaNac}"></td>
+			<td th:text="${alumno.media}"></td>
+			<td th:text="${alumno.aprobado}"></td>
+			<td th:text="${alumno.idClase.nombre}"></td>
+			<td><a href="<c:url value='/edit/${alumno.id}' />" >Editar</a></td>
+			<td><a th:href="@{/Alumno/borrar(id=${alumno.id})}" >Borrar</a></td>		
+		</tr>
+	</c:forEach>
+	</table>
+</c:if>
+</body>
+</html>
+

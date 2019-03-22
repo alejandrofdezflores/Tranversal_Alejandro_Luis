@@ -79,6 +79,7 @@ public class AlumnoDao {
         return listOfAlumno;
     }
 
+
 	public static void getAllAlumnos(int id2) {
 		 Transaction transaction = null;
 	        List<Alumno> listOfAlumno = null;
@@ -99,3 +100,7 @@ public class AlumnoDao {
 
 
 	
+
+	
+}
+

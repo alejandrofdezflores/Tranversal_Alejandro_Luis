@@ -6,7 +6,10 @@ import com.example.model.HibernateUtil;
 import com.example.model.Clase;
 
 public class ClaseDao {
+
 	public static void saveClase(Clase clase) {
+
+	public void saveClase(Clase clase) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -22,6 +25,8 @@ public class ClaseDao {
     }
 
     public static void deleteClase(int id) {
+
+    public void deleteClase(int id) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -39,7 +44,11 @@ public class ClaseDao {
         }
     }
 
+ 
     public static void updateClase(Clase clase) {
+
+    public void updateClase(Clase clase) {
+ 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -91,6 +100,7 @@ public class ClaseDao {
         return listOfClase;
     }
     
+
     public static Clase buscarClaseById(int id) {
         Transaction transaction = null;
         Clase clase = null;
@@ -101,5 +111,21 @@ public class ClaseDao {
             System.out.println("Error: la transacción no ha sido posible");
             }     
 		return clase;
+
+    public static Clase getClaseById(int id) {
+        Transaction transaction = null;
+        Clase listOfClase = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            listOfClase = (Clase) session.createQuery("Select c From Clase where c.id = :id").getSingleResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfClase;
+
     }
 }
