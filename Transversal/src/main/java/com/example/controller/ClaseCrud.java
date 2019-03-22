@@ -60,6 +60,13 @@ public class ClaseCrud {
         return "Clase/creado";
     }
     
+    @RequestMapping(path="/mostrar", method=RequestMethod.GET)
+    public String mostrar(@RequestParam(name="id")String id, ModelMap mp){
+    	int id2 = Integer.valueOf(id);
+    	mp.put("clase",ClaseDao.buscarClaseById(id2));
+        return "Clase/mostrar";
+    }
+    
     @RequestMapping(path="/borrar", method=RequestMethod.GET)
     public String borrar(@RequestParam(name="id")String id, ModelMap mp){
     	int id2 = Integer.valueOf(id);

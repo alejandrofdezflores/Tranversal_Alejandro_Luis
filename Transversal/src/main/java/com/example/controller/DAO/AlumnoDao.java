@@ -79,5 +79,23 @@ public class AlumnoDao {
         return listOfAlumno;
     }
 
+	public static void getAllAlumnos(int id2) {
+		 Transaction transaction = null;
+	        List<Alumno> listOfAlumno = null;
+	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	            transaction = session.beginTransaction();
+	            listOfAlumno = session.createQuery("From Alumno").getResultList();
+	            transaction.commit();
+	        } catch (Exception e) {
+	            if (transaction != null) {
+	                transaction.rollback();
+	            }
+	            e.printStackTrace();
+	        }
+	    }
 	
-}
+	}
+		
+
+
+	
