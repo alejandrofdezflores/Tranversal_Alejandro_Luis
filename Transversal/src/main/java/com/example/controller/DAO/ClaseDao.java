@@ -6,6 +6,9 @@ import com.example.model.HibernateUtil;
 import com.example.model.Clase;
 
 public class ClaseDao {
+
+	public static void saveClase(Clase clase) {
+
 	public void saveClase(Clase clase) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -20,6 +23,8 @@ public class ClaseDao {
             e.printStackTrace();
         }
     }
+
+    public static void deleteClase(int id) {
 
     public void deleteClase(int id) {
         Transaction transaction = null;
@@ -39,7 +44,11 @@ public class ClaseDao {
         }
     }
 
+ 
+    public static void updateClase(Clase clase) {
+
     public void updateClase(Clase clase) {
+ 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -91,6 +100,18 @@ public class ClaseDao {
         return listOfClase;
     }
     
+
+    public static Clase buscarClaseById(int id) {
+        Transaction transaction = null;
+        Clase clase = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {   
+            clase = session.get(Clase.class, id);
+            return clase;
+        } catch (Exception e) {
+            System.out.println("Error: la transacción no ha sido posible");
+            }     
+		return clase;
+
     public static Clase getClaseById(int id) {
         Transaction transaction = null;
         Clase listOfClase = null;
@@ -105,5 +126,6 @@ public class ClaseDao {
             e.printStackTrace();
         }
         return listOfClase;
+
     }
 }
